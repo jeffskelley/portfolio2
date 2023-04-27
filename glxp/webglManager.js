@@ -3,6 +3,9 @@ import { WebGLRenderer } from 'three'
 import { useWebGLStore } from '~/store/webgl'
 
 import { HomepageScene } from '~/glxp/scenes/homepage'
+import { LiquidImageScene } from '~/glxp/scenes/liquidImage'
+
+// FPO
 import { CubeScene } from '~/glxp/scenes/cube'
 import { BallScene } from '~/glxp/scenes/ball'
 import { PyramidScene } from '~/glxp/scenes/pyramid'
@@ -17,6 +20,7 @@ export class WebGLManager {
       cube: new CubeScene(this.renderer),
       ball: new BallScene(this.renderer),
       pyramid: new PyramidScene(this.renderer),
+      liquid: new LiquidImageScene(this.renderer),
     }
     this.activeScene = null
   }
