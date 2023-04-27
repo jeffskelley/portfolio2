@@ -1,0 +1,3 @@
+[ ] on size change, recalculate heights for sections
+[ ] in PageSections: use gsap.context to kill all nested timelines
+[ ] glxp/dripPlane: resizing

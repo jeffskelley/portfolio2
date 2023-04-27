@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+}
+.headline {
+  &--1 {
+    font-weight: bold;
+    font-size: px2vw(100);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  &--2 {
+    font-weight: bold;
+    font-size: px2vw(45);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff; 
+  }
+}
+
+.text-body {
+  font-size: px2vw(25);
+}
