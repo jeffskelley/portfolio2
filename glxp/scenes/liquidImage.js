@@ -107,7 +107,8 @@ export class LiquidImageScene extends SceneAbstract {
     super.load()
   }
 
-  render() {
+  render(time, renderTarget) {
+    renderTarget = renderTarget || null
     const flowmapUniforms = this.flowmapMaterial.uniforms
     flowmapUniforms.uMouse.value = {
       x: this.mouse.x,
@@ -121,7 +122,7 @@ export class LiquidImageScene extends SceneAbstract {
     this.renderer.setRenderTarget(this.targets.write)
     this.renderer.render(this.flowmapScene, this.camera)
 
-    this.renderer.setRenderTarget(null)
+    this.renderer.setRenderTarget(renderTarget)
     this.renderer.render(this.scene, this.camera)
 
     this.targets.swap()

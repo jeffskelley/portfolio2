@@ -37,7 +37,9 @@ export class WebGLManager {
   }
 
   loadScene(slug) {
-    return this.scenes[slug].load()
+    if (!this.scenes[slug].isLoaded) {
+      return this.scenes[slug].load()
+    }
   }
 
   activateScene(slug) {

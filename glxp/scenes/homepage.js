@@ -17,6 +17,7 @@ import { Scene } from '~/glxp/abstract/scene'
 import { CubeScene } from '~/glxp/scenes/cube'
 import { BallScene } from '~/glxp/scenes/ball'
 import { PyramidScene } from '~/glxp/scenes/pyramid'
+import { LiquidImageScene } from '~/glxp/scenes/liquidImage'
 // import { UIScene } from '~/glxp/scenes/ui'
 
 import { DripPlane } from '~/glxp/entities/dripPlane'
@@ -54,21 +55,28 @@ export class HomepageScene extends Scene {
           window.innerWidth * dpr,
           window.innerHeight * dpr
         ),
-        scene: new CubeScene(),
+        scene: new CubeScene(this.renderer),
       },
       ball: {
         texture: new WebGLRenderTarget(
           window.innerWidth * dpr,
           window.innerHeight * dpr
         ),
-        scene: new BallScene(),
+        scene: new BallScene(this.renderer),
       },
-      pyramid: {
+      // pyramid: {
+      //   texture: new WebGLRenderTarget(
+      //     window.innerWidth * dpr,
+      //     window.innerHeight * dpr
+      //   ),
+      //   scene: new PyramidScene(this.renderer),
+      // },
+      liquidImage: {
         texture: new WebGLRenderTarget(
           window.innerWidth * dpr,
           window.innerHeight * dpr
         ),
-        scene: new PyramidScene(),
+        scene: new LiquidImageScene(this.renderer),
       },
     }
 
@@ -318,7 +326,7 @@ export class HomepageScene extends Scene {
       scene.update(time)
       this.renderer.setRenderTarget(texture)
       this.renderer.clear()
-      this.renderer.render(scene.scene, scene.camera)
+      scene.render(time, texture)
     })
 
     /**
@@ -329,11 +337,7 @@ export class HomepageScene extends Scene {
     this.compositePass.uniforms.tTexture2.value =
       this.subscenes.ball.texture.texture
     this.compositePass.uniforms.tTexture3.value =
-      this.subscenes.pyramid.texture.texture
+      this.subscenes.liquidImage.texture.texture
     this.composer.render()
-
-    // this.renderer.setRenderTarget(null)
-    // this.renderer.clearDepth()
-    // this.renderer.render(this.ui.scene, this.ui.camera)
   }
 }

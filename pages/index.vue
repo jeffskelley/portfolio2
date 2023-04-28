@@ -43,7 +43,7 @@ const data = reactive({
 })
 
 const webglStore = useWebGLStore()
-onMounted(async () => {
+watchEffect(async () => {
   if (webglStore.isInitialized) {
     await $webglManager.loadScene('homepage')
     $webglManager.activateScene('homepage')

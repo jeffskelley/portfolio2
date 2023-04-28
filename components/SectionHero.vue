@@ -47,7 +47,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  timeline?.kill()
+  timeline.value?.kill()
 })
 </script>
 
